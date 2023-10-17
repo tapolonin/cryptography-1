@@ -1,1 +1,34 @@
+#include <stdio.h>
+#include <string.h>
 
+// Оголошення структури для представлення великого числа
+struct BigInteger {
+    char digits[100]; // Масив для зберігання цифр великого числа
+    int numDigits;    // Кількість цифр у великому числі
+};
+
+// Функція для встановлення значення великого числа з рядка шістнадцяткового представлення
+void setHex(struct BigInteger *bigInt, const char *hexString) {
+    strcpy(bigInt->digits, hexString);
+    bigInt->numDigits = strlen(hexString);
+}
+
+// Функція для отримання значення великого числа у вигляді рядка шістнадцяткового представлення
+void getHex(const struct BigInteger *bigInt, char *hexString) {
+    strcpy(hexString, bigInt->digits);
+}
+
+int main() {
+    struct BigInteger myBigInt;
+    char hexString[100]; // Рядок для зберігання шістнадцяткового представлення великого числа
+
+    // Встановлення великого числа з рядка шістнадцяткового представлення
+    setHex(&myBigInt, "1A2B3C4D5E6F7"); // Приклад
+
+    // Отримання великого числа у вигляді рядка шістнадцяткового представлення
+    getHex(&myBigInt, hexString);
+    
+    printf("Велике число у шістнадцятковому представленні: %s\n", hexString);
+    
+    return 0;
+}
